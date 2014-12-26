@@ -2,24 +2,22 @@ name := "activator-spray-twitter"
 
 version := "1.0"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.4"
 
 resolvers += "spray repo" at "http://repo.spray.io"
+
+resolvers += "spray nightlies repo" at "http://nightlies.spray.io"
 
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka"      %% "akka-actor"            % "2.2.3",
-  "com.typesafe.akka"      %% "akka-slf4j"            % "2.2.3",
-  "io.spray"                % "spray-can"             % "1.2.0",
-  "io.spray"                % "spray-client"          % "1.2.0",
-  "io.spray"                % "spray-routing"         % "1.2.0",
-  "io.spray"               %% "spray-json"            % "1.2.5",
+  "com.typesafe.akka"      %% "akka-actor"            % "2.3.6",
+  "com.typesafe.akka"      %% "akka-slf4j"            % "2.3.6",
+  "io.spray"                % "spray-client"          % "1.3.2-20140909",
+  "io.spray"               %% "spray-json"            % "1.3.2-20140909",
+  "com.wandoulabs.akka"    %% "spray-websocket"       % "0.1.3",
   "org.eigengo.monitor"     % "agent-akka"            % "0.2-SNAPSHOT",
-  "org.eigengo.monitor"     % "output-statsd"         % "0.2-SNAPSHOT",
-  "org.specs2"             %% "specs2"                % "2.2.2"        % "test",
-  "io.spray"                % "spray-testkit"         % "1.2.0"        % "test",
-  "com.typesafe.akka"      %% "akka-testkit"          % "2.2.3"        % "test"
+  "org.eigengo.monitor"     % "output-statsd"         % "0.2-SNAPSHOT"
 )
 
 scalacOptions ++= Seq(
