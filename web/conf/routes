@@ -1,0 +1,2 @@
+GET  /track/:keyword web.controllers.Application.track(keyword: String)
+GET  /assets/*file   controllers.Assets.at(path="/public", file)
