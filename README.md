@@ -15,4 +15,12 @@ Before you run the application, create the ``~/.twitter/activator`` file, contai
 Naturally, the you will need to replace the ``*``s with the values in your consumer token and secret; and token value and secret.
 
 ##Running
-Having added the file above, you can see the application "in action", by run ``sbt run`` in an ANSI terminal. Once running, type in ``track christmas``, ``track daley``, or anything else that tickles your fancy.
+Run the application
+```bash
+$ sbt 
+> project web
+> run
+```
+then connect your Websocket client to 
+`ws://localhost:9000/track/<keyword>`
+
