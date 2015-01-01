@@ -30,4 +30,4 @@ outputStrategy in run := Some(StdoutOutput)
 
 lazy val core = CoreBuild.core
 
-lazy val web = project in file("web") enablePlugins(PlayScala) dependsOn core
+lazy val web = WebBuild.web enablePlugins(PlayScala) dependsOn core

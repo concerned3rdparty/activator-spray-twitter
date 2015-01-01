@@ -14,6 +14,13 @@ object BuildSettings {
 object Dependencies {
 
   val specs2 = "org.specs2" %% "specs2" % "2.3.11" % "test"
+  
+  object WebJars {
+    val angularJs = "org.webjars" % "angularjs" % "1.3.8"
+    val requireJs = "org.webjars" % "requirejs" % "2.1.11-1"
+    val bootstrap = "org.webjars" % "bootstrap" % "3.0.2"
+    val underscorejs = "org.webjars" % "underscorejs" % "1.7.0-1"
+  }
 
   object Akka {
     private val version = "2.3.6"

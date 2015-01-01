@@ -1,0 +1,19 @@
+.form-group {
+  margin-left: 34%;
+}
+.txt-input {
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 5px;
+  padding: 4px 5px 7px 5px;
+  width: 40%;
+  margin-right: 5px;
+}
+.results-contianer {
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 5px 15px;
+}
+.boarder-left {
+  border-right: 2px solid rgb(182, 182, 182);
+}

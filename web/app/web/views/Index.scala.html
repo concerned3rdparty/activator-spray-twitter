@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <title>Twitter Sentiment Analysis</title>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="@routes.Assets.at("lib/bootstrap/css/bootstrap.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("css/main.css")">
+    <script data-main="@routes.Assets.at("js/config/requirejs-config.js")" src="@routes.Assets.at("lib/requirejs/require.js")"></script>
+  </head>
+
+  <body>
+    <div class="container" ng-view>
+      <div ng-controller='TwitterTrackController'>
+        <div class="text-center">
+          <h2>Twitter Sentiment Analysis for '2015'</h2>        
+        </div>
+        <div class="results-contianer">
+          <div class="row">
+            <div class="col-xs-4">
+              <h4>Places</h4>
+              <p ng-repeat="place in analysis.places">
+                {{place.name}}: {{place.value}}
+              </p>
+            </div>
+            <div class="col-xs-4">
+              <h4>Languages</h4>
+              <p ng-repeat="lang in analysis.languages">
+                {{lang.name}}: {{lang.value}}
+              </p>
+            </div>
+            <div class="col-xs-4">
+              <h4>Sentiment Analysis</h4>
+              <p>
+                All: <span ng-bind='analysis.sentiment.all'>{{analysis.sentiment.all}}</span>  
+              </p>
+              <p>              
+                Negative: <span ng-bind='analysis.sentiment.negative'>{{analysis.sentiment.negative}}</span>
+              </p>
+              <p>              
+                Negative.gurus: <span ng-bind='analysis.sentiment.negative_gurus'>{{analysis.sentiment.negative_gurus}}</span>
+              </p>
+              <p>              
+                positive: <span ng-bind='analysis.sentiment.positive'>{{analysis.sentiment.positive}}</span>
+              </p>
+              <p>
+                positive.gurus: <span ng-bind='analysis.sentiment.positive_gurus'>{{analysis.sentiment.positive_gurus}}</span>                
+              </p>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>

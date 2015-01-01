@@ -12,6 +12,10 @@ object Application extends Controller {
   val globals = current.global.asInstanceOf[web.Global.type]
   lazy val tracker: ActorRef = globals.tracker
   implicit lazy val ec = globals.system.dispatcher
+  
+  def index = Action {
+    Ok(web.views.html.Index())
+  }
 
   def track(keyword: String) = WebSocket.using[JsValue] { _ =>
     val (out, channel) = Concurrent.broadcast[JsValue]
