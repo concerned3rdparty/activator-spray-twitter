@@ -4,13 +4,15 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="@routes.Assets.at("lib/bootstrap/css/bootstrap.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("lib/nvd3/nv.d3.css")">
     <link rel="stylesheet" href="@routes.Assets.at("css/main.css")">
+    <script type="text/javascript" src="@routes.Assets.at("/lib/d3js/d3.js")"></script>
     <script data-main="@routes.Assets.at("js/config/requirejs-config.js")" src="@routes.Assets.at("lib/requirejs/require.js")"></script>
   </head>
 
   <body>
     <div class="container" ng-view>
-      <div ng-controller='TwitterTrackController'>
+      <div ng-controller='analysisInfoController'>
         <div class="text-center">
           <h2>Twitter Sentiment Analysis for '2015'</h2>        
         </div>
@@ -18,33 +20,32 @@
           <div class="row">
             <div class="col-xs-4">
               <h4>Places</h4>
-              <p ng-repeat="place in analysis.places">
-                {{place.name}}: {{place.value}}
-              </p>
+              <places-list places="analysis.places"></places-list>
+              
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-2">
               <h4>Languages</h4>
-              <p ng-repeat="lang in analysis.languages">
-                {{lang.name}}: {{lang.value}}
-              </p>
+              <languages-list languages="analysis.languages"></languages-list>
+              
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-6">
               <h4>Sentiment Analysis</h4>
-              <p>
-                All: <span ng-bind='analysis.sentiment.all'>{{analysis.sentiment.all}}</span>  
-              </p>
-              <p>              
-                Negative: <span ng-bind='analysis.sentiment.negative'>{{analysis.sentiment.negative}}</span>
-              </p>
-              <p>              
-                Negative.gurus: <span ng-bind='analysis.sentiment.negative_gurus'>{{analysis.sentiment.negative_gurus}}</span>
-              </p>
-              <p>              
-                positive: <span ng-bind='analysis.sentiment.positive'>{{analysis.sentiment.positive}}</span>
-              </p>
-              <p>
-                positive.gurus: <span ng-bind='analysis.sentiment.positive_gurus'>{{analysis.sentiment.positive_gurus}}</span>                
-              </p>
+              <div class="pull-right sentiment-analy ">
+                <nvd3-pie-chart
+                    data="sentiment"
+                    id="toolTipSentiment"
+                    tooltips="true"
+                    width="550"
+                    height="350"
+                    showLabels="true"
+                    x="xFunction()"
+                    y="yFunction()"
+                    color="colorFunction()">
+                      <svg></svg>
+                  </nvd3-pie-chart>
+              </div>
+              <sentiment-list sentiment="analysis.sentiment" ng-class="pull-left"></sentiment-list>
+
             </div>
           </div>        
         </div>

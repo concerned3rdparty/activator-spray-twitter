@@ -3,6 +3,6 @@
 require(['require',
         'app'], function() {
   return angular
-  .bootstrap(document, ['TwitterTrackApp']);
+  .bootstrap(document, ['twitterTrackApp']);
 });
 

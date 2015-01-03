@@ -1,0 +1,9 @@
+<ul class="non-style pln">
+	<li class="mbs auto-overflow" ng-repeat="place in places | orderBy:'-value'">
+		<span class="pull-left width-70pc">{{place.name}}: {{place.value}}</span>
+		<div class="pull-right width-30pc"> 
+			<div class="pull-left percent" style="width:{{place.percent}}%"></div>
+		</div>
+
+	</li>
+</ul>

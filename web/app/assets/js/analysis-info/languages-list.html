@@ -1,0 +1,9 @@
+<ul class="non-style pln">
+	<li class="mbs auto-overflow" ng-repeat="lang in languages | orderBy:'-value'">
+		<span class="pull-left">{{lang.name}}: {{lang.value}}</span>
+		<div class="pull-right width-50pc"> 
+			<div class="pull-left percent" style="width:{{lang.percent}}%"></div>
+		</div>
+
+	</li>
+</ul>

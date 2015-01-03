@@ -12,8 +12,63 @@
   border: 1px solid rgb(182, 182, 182);
   border-radius: 5px;
   margin-top: 10px;
+  margin-bottom: 20px;
   padding: 5px 15px;
 }
 .boarder-left {
   border-right: 2px solid rgb(182, 182, 182);
+}
+
+.negative-color {
+  color: #ffbb78 !important;
+}
+.negative-gurus-color {
+  color: #ff7f0e !important;
+}
+
+.positive-color {
+  color: #98df8a !important;
+}
+.positive-gurus-color {
+  color: #2ca02c !important;
+}
+
+.non-style {
+  list-style: none;
+}
+.pln {
+  padding-left: 0px;
+}
+.mbs {
+  margin-bottom: 5px;
+}
+.mrs {
+  margin-right: 5px;
+}
+.sentiment-analy {
+  width: 76%;
+}
+.auto-overflow {
+  overflow: auto;
+}
+.width-30pc {
+  width: 30%
+}
+.width-70pc {
+  width: 70%
+}
+.width-50pc {
+  width: 50%;
+}
+.percent {
+  min-width: 1px;
+  height: 20px;
+  background: #058dc7;
+  color: white;
+  text-align: center;
+}
+svg {
+  padding-bottom: 40px;
+  margin-top: -75px;
+  margin-left: -125px;
 }

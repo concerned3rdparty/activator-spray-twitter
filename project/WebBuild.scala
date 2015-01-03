@@ -8,8 +8,9 @@ object WebBuild {
     libraryDependencies ++= Seq(
       WebJars.requireJs,
       WebJars.bootstrap,
-      WebJars.underscorejs,
-      WebJars.angularJs
+      WebJars.underscoreJs,
+      WebJars.angularJs,
+      WebJars.angularnvd3Directives
     )
   )
   val web = project in file("web") settings (settings: _*)
