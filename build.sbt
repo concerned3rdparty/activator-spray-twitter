@@ -31,3 +31,5 @@ outputStrategy in run := Some(StdoutOutput)
 lazy val core = CoreBuild.core
 
 lazy val web = WebBuild.web enablePlugins(PlayScala) dependsOn core
+
+herokuAppName in Compile := "twitter-sentiment-analyser"
