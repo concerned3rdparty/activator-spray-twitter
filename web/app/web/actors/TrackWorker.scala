@@ -6,7 +6,6 @@ import play.api.libs.iteratee.Concurrent.Channel
 import core._
 
 class TrackWorker(keyword: String) extends Actor with ActorLogging {
-  import Tracker._
   import TrackWorker._
 
   val sentiment = context.actorOf(Props(new SentimentAnalysisActor with CSVLoadedSentimentSets with ParentSentimentOutput))
@@ -17,9 +16,9 @@ class TrackWorker(keyword: String) extends Actor with ActorLogging {
   var channels = Set.empty[Channel[JsValue]]
 
   def receive = {
-    case Register(`keyword`, channel) =>
+    case Register(channel) =>
       channels += channel
-    case Unregister(`keyword`, channel) =>
+    case Unregister(channel) =>
       channels -= channel
     case Publish(values) =>
       broadcast(format(values))
@@ -30,15 +29,21 @@ class TrackWorker(keyword: String) extends Actor with ActorLogging {
     super.unhandled(msg)
   }
 
-  def format(values: List[Iterable[(String, Int)]]): JsValue =
-    Json.toJson(values.map(_.toMap))
+  def format(values: List[Iterable[(String, Int)]]) =
+    Json.obj(
+      "keyword" -> keyword,
+      "values" -> values.map(_.toMap)
+    )
 
-  def broadcast(message: JsValue) =
+  def broadcast(message: JsObject) =
     channels.foreach(_.push(message))
 
 }
 
 object TrackWorker {
+  case class Register(channel: Channel[JsValue])
+  case class Unregister(channel: Channel[JsValue])
+
   case class Publish(values: List[Iterable[(String, Int)]])
 
   def props(keyword: String) = Props(new TrackWorker(keyword))

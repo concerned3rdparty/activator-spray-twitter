@@ -4,7 +4,7 @@ define(['require',
         'angular',
         'analysis-info/analysis-info'], function(require) {
   var angular = require('angular');
-  
+
   var app = angular
   .module('twitterTrackApp', [
     'angular-websocket',
@@ -13,8 +13,7 @@ define(['require',
   .config(function(WebSocketProvider){
     WebSocketProvider
       .prefix('')
-      .uri('ws://localhost:9000/track/2015');
+      .uri('ws://localhost:9000/track/');
   });
-  
-});
 
+});
