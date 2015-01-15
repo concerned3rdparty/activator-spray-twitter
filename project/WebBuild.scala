@@ -9,8 +9,7 @@ object WebBuild {
       WebJars.requireJs,
       WebJars.bootstrap,
       WebJars.underscoreJs,
-      WebJars.angularJs,
-      WebJars.angularnvd3
+      WebJars.angularJs
     )
   )
   val web = project in file("web") settings (settings: _*)

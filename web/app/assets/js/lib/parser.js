@@ -3,12 +3,16 @@ define(['require',
 
   return {
     parserSentiment: function (msg) {
-      var sentimentObject = JSON.parse(msg);
+      var trackObject = JSON.parse(msg);
+      var sentimentObject = trackObject.values
       this.total = sentimentObject[0].all
       return {
-        sentiment: this.parseSentiment(sentimentObject[0]),
-        places: this.parsePlaces(sentimentObject[1]),
-        languages: this.parseLanguages(sentimentObject[2])
+        keyword: trackObject.keyword,
+        analysis: {
+          sentiment: this.parseSentiment(sentimentObject[0]),
+          places: this.parsePlaces(sentimentObject[1]),
+          languages: this.parseLanguages(sentimentObject[2])
+        }
       }
     },
     parseSentiment: function (sentiment) {

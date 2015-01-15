@@ -4,15 +4,14 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="@routes.Assets.at("lib/bootstrap/css/bootstrap.css")">
-    <link rel="stylesheet" href="@routes.Assets.at("lib/nvd3/nv.d3.css")">
     <link rel="stylesheet" href="@routes.Assets.at("css/main.css")">
-    <script type="text/javascript" src="@routes.Assets.at("/lib/d3js/d3.js")"></script>
     <script data-main="@routes.Assets.at("js/config/requirejs-config.js")" src="@routes.Assets.at("lib/requirejs/require.js")"></script>
   </head>
 
   <body>
     <div class="container" ng-view ng-controller="analysisInfoController">
-      <analysis-info tracks='tracks'></analysis-info>
+      <track-bar tracks='tracks' keywords='keywords'></track-bar>
+      <analysis-info tracks='tracks' keywords='keywords'></analysis-info>
     </div>
     
   </body>

@@ -2,6 +2,7 @@
 
 define(['require',
         'angular',
+        'underscore',
         'angular-webSocket',
         'underscore',
         'lib/parser'], function(require) {
@@ -12,24 +13,45 @@ define(['require',
           'angular-websocket'
   ])
   .controller('analysisInfoController', [
-      '$scope','$interval', 'WebSocket',
-      function ($scope,$interval, WebSocket) {   
-        WebSocket.onmessage(function(event) {
-          var analysis = Parser.parserSentiment(event.data)
-          $scope.tracks = [
-            {
-              trackWord: '2015',
-              analysis: analysis
+      '$scope', 'WebSocket',
+      function ($scope, WebSocket) {  
+          $scope.tracks = [];
+          $scope.keywords = [];
+          WebSocket.onmessage(function(event) {
+            var track = Parser.parserSentiment(event.data);
+            var keyword = track.keyword;
+            if (_.contains($scope.keywords, keyword)){
+              $scope.tracks.forEach(function(trackData, index){
+                if (trackData.keyword === keyword) {
+                  trackData.analysis = track.analysis;
+                }
+              })
+
             }
-          ]
-        });
+          });
       }
     ]
   )
   .directive('analysisInfo', [function () {
     return {
       scope: {
-        'tracks': '='
+        'tracks': '=',
+        'keywords': '='
+      },
+      controller: function($scope, WebSocket){
+        $scope.untrack = function (keyword) {
+          $scope.tracks = _.without(
+            $scope.tracks, 
+            _.findWhere(
+              $scope.tracks, 
+              {'keyword': keyword}
+            )
+          );
+          $scope.keywords = _.without($scope.keywords, keyword)
+          WebSocket.send(JSON.stringify({untrack: keyword}));
+          document.getElementById('heading-'+ keyword).parentNode.remove();
+        };
+
       },
       restrict: 'E', 
       templateUrl: 'assets/js/analysis-info/analysis-info.html'

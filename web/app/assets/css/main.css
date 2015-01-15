@@ -1,6 +1,7 @@
 .form-group {
   margin-left: 34%;
 }
+
 .txt-input {
   border: 1px solid rgb(182, 182, 182);
   border-radius: 5px;
@@ -8,16 +9,7 @@
   width: 40%;
   margin-right: 5px;
 }
-.results-contianer {
-  border: 1px solid rgb(182, 182, 182);
-  border-radius: 5px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  padding: 5px 15px;
-}
-.boarder-left {
-  border-right: 2px solid rgb(182, 182, 182);
-}
+/* Percent */
 .percent {
   min-width: 1px;
   height: 20px;
@@ -59,6 +51,9 @@
 .mbs {
   margin-bottom: 5px;
 }
+.mbm {
+  margin-bottom: 10px;
+}
 .mrs {
   margin-right: 5px;
 }
@@ -81,8 +76,40 @@
   width: 50%;
 }
 
-svg {
-  padding-bottom: 40px;
-  margin-top: -75px;
-  margin-left: -125px;
+
+/* Spiner */
+.spin {
+  -webkit-animation: spin .8s infinite linear;
+  -moz-animation: spin .8s infinite linear;
+  -o-animation: spin .8s infinite linear;
+  animation: spin .8s infinite linear;
+     -webkit-transform-origin: 50% 58%;
+         transform-origin:50% 58%;
+         -ms-transform-origin:50% 58%; /* IE 9 */
+}
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
