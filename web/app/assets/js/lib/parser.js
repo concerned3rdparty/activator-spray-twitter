@@ -14,10 +14,25 @@ define(['require',
     parseSentiment: function (sentiment) {
       return {
         all: sentiment.all,
-        negative: sentiment.negative,
-        negative_gurus: sentiment['negative.gurus'],
-        positive: sentiment.positive,
-        positive_gurus: sentiment['positive.gurus']
+        negative: {
+          value: sentiment.negative,
+          percent: this.calcPercent(sentiment.negative)
+        },
+        negative_gurus: {
+          value: sentiment['negative.gurus'],
+          percent: this.calcPercent(sentiment['negative.gurus'])
+
+        },
+        positive: {
+          value: sentiment.positive,
+          percent: this.calcPercent(sentiment.positive)
+
+        },
+        positive_gurus: {
+          value: sentiment['positive.gurus'],
+          percent: this.calcPercent(sentiment['positive.gurus'])
+
+        }
       }
     },
     parseLanguages: function (languages) {

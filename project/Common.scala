@@ -20,7 +20,7 @@ object Dependencies {
     val requireJs = "org.webjars" % "requirejs" % "2.1.11-1"
     val bootstrap = "org.webjars" % "bootstrap" % "3.0.2"
     val underscoreJs = "org.webjars" % "underscorejs" % "1.7.0-1"
-    val angularnvd3Directives = "org.webjars" % "angularjs-nvd3-directives" % "0.0.7-1"
+    val angularnvd3 = "org.webjars" % "angular-nvd3" % "0.0.9"
   }
 
   object Akka {

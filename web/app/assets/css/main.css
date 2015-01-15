@@ -18,16 +18,33 @@
 .boarder-left {
   border-right: 2px solid rgb(182, 182, 182);
 }
-
+.percent {
+  min-width: 1px;
+  height: 20px;
+  background: #058dc7;
+  color: #353535;
+  text-align: center;
+}
+.negative-color .percent {
+  background: #ffbb78 !important;
+}
 .negative-color {
   color: #ffbb78 !important;
+}
+.negative-gurus-color .percent {
+  background: #ff7f0e !important;
 }
 .negative-gurus-color {
   color: #ff7f0e !important;
 }
-
+.positive-color .percent {
+  background: #98df8a !important;
+}
 .positive-color {
   color: #98df8a !important;
+}
+.positive-gurus-color .percent {
+  background: #2ca02c !important;
 }
 .positive-gurus-color {
   color: #2ca02c !important;
@@ -45,6 +62,9 @@
 .mrs {
   margin-right: 5px;
 }
+.mls {
+  margin-left: 5px;
+}
 .sentiment-analy {
   width: 76%;
 }
@@ -60,13 +80,7 @@
 .width-50pc {
   width: 50%;
 }
-.percent {
-  min-width: 1px;
-  height: 20px;
-  background: #058dc7;
-  color: white;
-  text-align: center;
-}
+
 svg {
   padding-bottom: 40px;
   margin-top: -75px;

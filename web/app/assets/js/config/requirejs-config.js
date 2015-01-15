@@ -7,7 +7,7 @@ requirejs.config({
     jquery: '../lib/jquery/jquery',
     'angular-webSocket': '../vendor/angular-websocket/angular-websocket',
     underscore: '../lib/underscorejs/underscore-min',
-    'angularjs-nvd3-directives': '../lib/angularjs-nvd3-directives/angularjs-nvd3-directives',
+    'angular-nvd3': '../lib/angular-nvd3/angular-nvd3.min',
     d3: '../lib/d3js/d3.min',
     nvd3: '../lib/nvd3/nv.d3.min'
   },
@@ -32,7 +32,7 @@ requirejs.config({
       deps: ['d3'],
       exports: 'nvd3'
     },
-    'angularjs-nvd3-directives': {
+    'angular-nvd3': {
       deps: ['angular', 'd3', 'nvd3']
     }
   }

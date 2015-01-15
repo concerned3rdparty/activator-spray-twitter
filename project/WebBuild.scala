@@ -10,7 +10,7 @@ object WebBuild {
       WebJars.bootstrap,
       WebJars.underscoreJs,
       WebJars.angularJs,
-      WebJars.angularnvd3Directives
+      WebJars.angularnvd3
     )
   )
   val web = project in file("web") settings (settings: _*)
