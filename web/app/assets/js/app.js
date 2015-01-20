@@ -2,13 +2,16 @@
 
 define(['require',
         'angular',
-        'analysis-info/analysis-info'], function(require) {
+        'bootstrap',
+        'analysis-info/analysis-info',
+        'track-bar/track-bar'], function(require) {
   var angular = require('angular');
 
   var app = angular
   .module('twitterTrackApp', [
     'angular-websocket',
-    'analysisInfo'
+    'analysisInfo',
+    'trackBar'
   ])
   .config(function(WebSocketProvider){
     WebSocketProvider

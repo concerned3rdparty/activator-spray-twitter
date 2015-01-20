@@ -2,56 +2,62 @@
 
 define(['require',
         'angular',
-        'angularjs-nvd3-directives',
+        'underscore',
         'angular-webSocket',
         'underscore',
         'lib/parser'], function(require) {
   var angular = require('angular');
   var Parser = require('lib/parser');
-
   return angular
   .module('analysisInfo', [
-          'angular-websocket',
-          'nvd3ChartDirectives'
+          'angular-websocket'
   ])
   .controller('analysisInfoController', [
-      '$scope', '$timeout', 'WebSocket',
-      function ($scope, $timeout, WebSocket) {
-        var analysisInfo = this;
-        analysisInfo.renderCharts = function () {
-          $scope.xFunction = function(){
-            return function(d) {
-              return d.key;
-            };
-          }
-          $scope.yFunction = function(){
-            return function(d) {
-              return d.y;
-            };
-          }
-          var colorArray = ['#ffbb78', '#ff7f0e', '#98df8a', '#2ca02c'];
-          $scope.colorFunction = function() {
-            return function(d, i) {
-                return colorArray[i];
-              };
-          }
-          
-          $scope.sentiment = [
-            { key: "Negative", y: $scope.analysis.sentiment.negative },
-            { key: "Negative Gurus", y: $scope.analysis.sentiment.negative_gurus },
-            { key: "Positive", y: $scope.analysis.sentiment.positive },
-            { key: "Positive Gurus", y: $scope.analysis.sentiment.positive_gurus }
+      '$scope', 'WebSocket',
+      function ($scope, WebSocket) {  
+          $scope.tracks = [];
+          $scope.keywords = [];
+          WebSocket.onmessage(function(event) {
+            var track = Parser.parserSentiment(event.data);
+            var keyword = track.keyword;
+            if (_.contains($scope.keywords, keyword)){
+              $scope.tracks.forEach(function(trackData, index){
+                if (trackData.keyword === keyword) {
+                  trackData.analysis = track.analysis;
+                }
+              })
 
-          ];
-        };
-        
-        WebSocket.onmessage(function(event) {
-          $scope.analysis = Parser.parserSentiment(event.data);
-          analysisInfo.renderCharts();
-        });
+            }
+          });
       }
     ]
   )
+  .directive('analysisInfo', [function () {
+    return {
+      scope: {
+        'tracks': '=',
+        'keywords': '='
+      },
+      controller: function($scope, WebSocket){
+        $scope.untrack = function (keyword) {
+          $scope.tracks = _.without(
+            $scope.tracks, 
+            _.findWhere(
+              $scope.tracks, 
+              {'keyword': keyword}
+            )
+          );
+          $scope.keywords = _.without($scope.keywords, keyword)
+          WebSocket.send(JSON.stringify({untrack: keyword}));
+          document.getElementById('heading-'+ keyword).parentNode.remove();
+        };
+
+      },
+      restrict: 'E', 
+      templateUrl: 'assets/js/analysis-info/analysis-info.html'
+    };
+  }])
+
   .directive('sentimentList', [function(){
     return {
       scope: {

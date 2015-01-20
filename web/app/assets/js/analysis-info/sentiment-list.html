@@ -1,22 +1,47 @@
 <ul class="non-style pln">
-  <li> 
-    All: 
-    <span ng-bind='sentiment.all'>{{sentiment.all}}</span> 
+  <li class="mbs auto-overflow"> 
+    <span class="pull-left width-50pc">
+      All: <span>{{sentiment.all}}</span> 
+    </span>
   </li>
-  <li class="negative-color"> 
-    Negative: 
-    <span ng-bind='sentiment.negative'>{{sentiment.negative}}</span> 
+
+  <li class="mbs auto-overflow negative-color"> 
+    <span class="pull-left width-50pc">
+      Negative: 
+      <span>{{sentiment.negative.value}}</span>
+    </span>
+    <div class="pull-right width-50pc"> 
+      <div class="pull-left percent" style="width:{{sentiment.negative.percent}}%"></div> 
+    </div>
   </li>
-  <li class="negative-gurus-color"> 
-    Negative Gurus: 
-    <span ng-bind='sentiment.negative_gurus'>{{sentiment.negative_gurus}}</span> 
+
+  <li class="mbs auto-overflow negative-gurus-color"> 
+    <span class="pull-left width-50pc">
+      Negative Gurus: 
+      <span>{{sentiment.negative_gurus.value}}</span>
+    </span>
+    <div class="pull-right width-50pc"> 
+      <div class="pull-left percent" style="width:{{sentiment.negative_gurus.percent}}%"></div> 
+    </div>
   </li>
-  <li class="positive-color"> 
-    Positive: 
-    <span ng-bind='sentiment.positive'>{{sentiment.positive}}</span> 
+
+  <li class="mbs auto-overflow positive-color"> 
+    <span class="pull-left width-50pc">
+      Positive: 
+      <span>{{sentiment.positive.value}}</span>
+    </span>
+    <div class="pull-right width-50pc"> 
+      <div class="pull-left percent" style="width:{{sentiment.positive.percent}}%;" ></div> 
+    </div>
   </li>
-  <li class="positive-gurus-color">
-    Positive Gurus: 
-    <span ng-bind='sentiment.positive_gurus'>{{sentiment.positive_gurus}}</span>
+
+  <li class="mbs auto-overflow positive-gurus-color"> 
+    <span class="pull-left width-50pc">
+      Positive Gurus: 
+      <span>{{sentiment.positive.value}}</span>
+    </span>
+    <div class="pull-right width-50pc"> 
+      <div class="pull-left percent" style="width:{{sentiment.positive_gurus.percent}}%"></div> 
+    </div> 
   </li>
 </ul>

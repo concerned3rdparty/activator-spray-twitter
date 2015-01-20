@@ -1,0 +1,33 @@
+<div class="panel-group mbs" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default" ng-repeat="track in tracks">
+    <div class="panel-heading auto-overflow" role="tab" id="heading-{{track.keyword}}">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{track.keyword}}" aria-expanded="false" aria-controls="collapse-{{track.keyword}}" class="collapsed pull-left">
+          <span ng-hide="track.analysis.sentiment.all" class="glyphicon glyphicon-refresh spin mrs" id="spinner-{{track.keyword}}"></span>
+          {{track.analysis.sentiment.all}} Tweets Sentiment Analysis for '{{track.keyword}}'
+        </a>
+        <button type="button" class="close pull-right" ng-click="untrack(track.keyword)"><span>&times;</span></button>
+      </h4>
+    </div>
+    <div id="collapse-{{track.keyword}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-{{track.keyword}}" aria-expanded="true">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-5">
+            <h4>Places</h4>
+            <places-list places="track.analysis.places"></places-list>
+            
+          </div>
+          <div class="col-xs-2">
+            <h4>Languages</h4>
+            <languages-list languages="track.analysis.languages"></languages-list>
+            
+          </div>
+          <div class="col-xs-5">
+            <h4>Sentiment Analysis</h4>
+            <sentiment-list sentiment="track.analysis.sentiment" ng-class="pull-left"></sentiment-list>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
